@@ -18,7 +18,11 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, r'C:\Users\ALIENWARE\AppData\Roaming\reasonix\skills\book2audiobook\src')
+# CLI 源码: 优先发布包内 src/, 回退本机 skill 目录
+_SRC = Path(__file__).resolve().parent.parent / 'src'
+if not (_SRC / 'book2audio' / '__init__.py').exists():
+    _SRC = Path(r'C:\Users\ALIENWARE\AppData\Roaming\reasonix\skills\book2audiobook\src')
+sys.path.insert(0, str(_SRC))
 import pymupdf
 
 # 自动识别章节标题: 仅"第X章/附录X/注释/参考文献"(不含"第X部分")

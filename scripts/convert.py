@@ -41,7 +41,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = Path(__file__).resolve().parent
 PY = sys.executable
 DEFAULT_WORK = ROOT / '.output.work'
-SKILL_SRC = Path(r'C:\Users\ALIENWARE\AppData\Roaming\reasonix\skills\book2audiobook\src')
+# CLI 源码定位: 优先发布包内的 src/(随 skill 一起分发), 回退到本机 skill 目录
+_LOCAL_SRC = SCRIPTS.parent / 'src'
+if not (_LOCAL_SRC / 'book2audio' / '__init__.py').exists():
+    _LOCAL_SRC = Path(r'C:\Users\ALIENWARE\AppData\Roaming\reasonix\skills\book2audiobook\src')
+SKILL_SRC = _LOCAL_SRC
 
 # ---------------------------------------------------------------- CLI 定位
 

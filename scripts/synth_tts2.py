@@ -19,12 +19,16 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, r'C:\Users\ALIENWARE\AppData\Roaming\reasonix\skills\book2audiobook\src')
+# CLI 源码: 优先发布包内 src/, 回退本机 skill 目录
+_SRC = Path(__file__).resolve().parent.parent / 'src'
+if not (_SRC / 'book2audio' / '__init__.py').exists():
+    _SRC = Path(r'C:\Users\ALIENWARE\AppData\Roaming\reasonix\skills\book2audiobook\src')
+sys.path.insert(0, str(_SRC))
 from book2audio.chunk import tts_friendly, split_chunks
 from book2audio.config import load_config
 import requests
 
-CFG_INI = r'D:\AI Projects\book2audio\book2audio.ini'
+CFG_INI = str(Path(__file__).resolve().parent.parent / 'book2audio.ini')
 PROXY = 'http://127.0.0.1:1088'
 
 
