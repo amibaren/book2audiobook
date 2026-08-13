@@ -16,9 +16,9 @@ from book2audio.chunk import tts_friendly, split_chunks
 from book2audio.config import load_config
 import requests
 
-CFG_INI = r'D:\AI Projects\book2audio\book2audio.ini'
-BOOK = Path(r'D:\AI Projects\book2audio\.output.work\book.json')
-STAGING = Path(r'D:\AI Projects\book2audio\.output.work\staging')
+CFG_INI = str(Path(__file__).resolve().parent.parent / 'book2audio.ini')
+BOOK = Path(__file__).resolve().parent.parent / '.output.work' / 'book.json'
+STAGING = Path(__file__).resolve().parent.parent / '.output.work' / 'staging'
 MAX_CHARS = 450
 PROXY = 'http://127.0.0.1:1088'
 SPEAKER = 'zh_female_vv_uranus_bigtts'  # 固定音色,避免每块随机
