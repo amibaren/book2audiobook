@@ -1,0 +1,26 @@
+[project]
+name = "book2audio"
+version = "0.1.0"
+description = "把 PDF/EPUB/MOBI/AZW3 电子书转成适合 Navidrome 入库的有声读物(分章音频 + LRC + 封面 + ID3 标签)"
+requires-python = ">=3.10"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "pymupdf>=1.24",
+    "mutagen>=1.47",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+edge = ["edge-tts>=6.1"]   # edge-tts 兜底引擎,不装则只能用火山方舟或 dry
+
+[project.scripts]
+book2audio = "book2audio.cli:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# PERF402 为误报(append 到列表);BLE001/S110 是设计意图:标注/标签失败降级不崩溃
+ignore = ["PERF402", "BLE001", "S110"]

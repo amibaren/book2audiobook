@@ -1,0 +1,45 @@
+; book2audio 配置文件模板
+; 用法: 复制为 book2audio.ini 并填入真实值
+; 参数也可用环境变量,优先级: 命令行 > 环境变量 > ini > 默认
+
+[book2audio]
+; ---- 语音技术 openspeech(主引擎,必填) ----
+; 控制台: console.volcengine.com 搜索"语音技术" → API Key 管理 → 创建
+openspeech_api_key = 粘贴你的语音技术APIKey
+openspeech_base_url = https://openspeech.bytedance.com/api/v3/tts
+openspeech_resource_id = seed-tts-2.0
+
+; ---- 火山方舟(LLM 情感标注用,可选) ----
+; 控制台 https://console.volcengine.com/ark → API Key 管理 → 创建
+ark_api_key =
+ark_base_url = https://ark.cn-beijing.volces.com/api/v3
+
+; ---- TTS 音色(seed-tts-2.0 用 uranus 2.0 系列) ----
+; 推荐: zh_female_wenroushunv_uranus_bigtts(温柔淑女 2.0)
+; 其他: zh_female_vv_uranus_bigtts(Vivi 2.0) / zh_female_gaolengyujie_uranus_bigtts(高冷御姐 2.0)
+;       zh_male_fanjuanqingnian_uranus_bigtts(反卷青年 2.0 男) ...
+; ⚠️ 1.0 的 *_mars_bigtts 音色不可用于 seed-tts-2.0(报 resource mismatch)
+voice = zh_female_wenroushunv_uranus_bigtts
+
+; 语速,1.0 为正常
+speed = 1.0
+
+; ---- 可选:LLM 情感标注(语气随上下文) ----
+; 填方舟对话模型 id 即可启用(如 doubao-seed-evolving,走 Responses API)
+; 注意: 该模型走 /api/v3/responses,CLI 当前走 chat/completions 会失败,见 docs
+llm_model =
+
+; ---- 可选:seed-audio 增强(小说对白/特殊情绪段) ----
+; 生成式音频,单次最长约 120 秒;必须配 references.speaker 固定音色
+seed_audio_model = seed-audio-1.0
+seed_audio_speech_rate = 1.0
+
+; ---- 可选:edge-tts 兜底 ----
+; 免费、无需 Key;中文默认 XiaoxiaoNeural
+; 需要代理时填,如 http://127.0.0.1:1088
+proxy =
+edge_voice = zh-CN-XiaoxiaoNeural
+
+; ---- 分块与输出 ----
+max_chars = 1500
+out_dir = output
