@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.output.work/
+.tmp_ocr/
+book2audio.ini
+.env
