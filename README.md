@@ -4,6 +4,14 @@
 每章一个音频文件 + 同名 LRC 文本 + 封面 + ID3 标签,拷贝进 Navidrome 的
 `MusicFolder` 后由 Navidrome 自动扫描入库,即可在车上用 Symfonium / Finamp 等客户端收听。
 
+## 📦 安装(支持自然语言/URL 方式)
+
+对任意 AI 助手说一句话即可安装本 skill:
+
+> **参考 https://raw.githubusercontent.com/amibaren/book2audiobook/main/SKILL.md,安装该 skill**
+
+或手动安装:见 [install.md](install.md)(一键 `install.ps1` + 配 key)。
+
 > 本文档为实测后的使用说明。推荐主引擎为**火山语音技术 TTS2.0**(seed-tts-2.0,声音自然、
 > 速度快);edge-tts 作为免费兜底。接入细节与踩坑记录见 [docs/火山语音TTS接入.md](docs/火山语音TTS接入.md)。
 
